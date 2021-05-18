@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deployvvet": "node deployvvet.js",
+    "deployFactory": "node index.js",
+    "getAddress": ""
   },
   "keywords": [],
   "author": "",
@@ -12,6 +14,7 @@
   "dependencies": {
     "@vechain/connex-driver": "^2.0.2",
     "@vechain/connex-framework": "^2.0.2",
+    "dotenv": "^9.0.2",
     "lodash": "^4.17.21",
     "thorify": "^1.5.4",
     "web3": "^1.3.5"

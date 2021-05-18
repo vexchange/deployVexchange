@@ -1,26 +1,5 @@
-// ES5 style
-const thorify = require("thorify").thorify;
-const Web3 = require("web3");
-const _ = require('lodash');
-const Framework = require('@vechain/connex-framework').Framework;
-const ConnexDriver = require('@vechain/connex-driver');
-
-const data = require("./data.json");
-const factory = require("./factory.json");
-const exchange = require("./exchange.json");
-
-const web3 = thorify(new Web3(), "https://testnet.veblocks.net/");
-
-web3.eth.accounts.wallet.add("0x6c17e54d9b425be4ce5ef3d47b0a2156a395bca41d74b33ab7b8abbd46f5c13a");
-
-const { Driver, SimpleNet, SimpleWallet } = ConnexDriver;
-const wallet = new SimpleWallet();
-
-// exchange
-
-// factory
-const factoryAddress = '0x5a6BB37E97dB359840c6A89AFBE0B09674b74e92';
-const exchangeAddress = '0x728737f4b5b5EEE74B629f966Dde6A01a8d0103C';
+const { config, thorify, web3, factoryAddress, exchangeAddress, 
+         Framework, Driver, data } = require( "./utils.js");
 
 const deployExchange = async () => {
   const contract = new web3.eth.Contract(exchange);
@@ -69,6 +48,12 @@ const getExchange = async () => {
   });
 };
 
+module.exports = {
+  deployExchange,
+  deployFactory,
+  getExchange
+};
+
 // deployExchange();
 // deployFactory();
-getExchange()
+// getExchange()
