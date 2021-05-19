@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "deployvvet": "node deployvvet.js",
-    "deployFactory": "node index.js",
+    "deployVvet": "node deployVvet.js",
+    "deployFactory": "node deployFactory.js",
     "getAddress": ""
   },
   "keywords": [],

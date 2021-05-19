@@ -11,5 +11,5 @@ module.exports = {
 	pathToRouterJson: '',
 	pathToExchangeJson: './exchange.json',
 	pathToDataJson: './data.json',
-	pathToVvetJson: ''
+	pathToVvetJson: '../vvet/vvet/build/contracts/VVET9.json'
 };

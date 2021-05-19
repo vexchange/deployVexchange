@@ -11,8 +11,6 @@ const vvet = require(config.pathToVvetJson);
 const factory = require(config.pathToFactoryJson);
 const exchange = require(config.pathToExchangeJson);
 
-console.log(config);
-
 const web3 = thorify(new Web3(), config.testnetRpcUrl);
 
 web3.eth.accounts.wallet.add(config.privateKey);

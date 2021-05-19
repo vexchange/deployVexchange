@@ -11,7 +11,6 @@ const deployExchange = async () => {
     }).send({
       from: '0x57e977Ff64FDD6b352FE0adA9D7a2f759F2cAb4a',
     });
-
     console.log(test)
   } catch(error) {
     console.log(error)
@@ -48,12 +47,3 @@ const getExchange = async () => {
   });
 };
 
-module.exports = {
-  deployExchange,
-  deployFactory,
-  getExchange
-};
-
-// deployExchange();
-// deployFactory();
-// getExchange()
