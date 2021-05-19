@@ -2,8 +2,8 @@
 const config = require("./config");
 const thorify = require("thorify").thorify;
 const Web3 = require("web3");
-const _ = require('lodash');
-const Framework = require('@vechain/connex-framework').Framework;
+// const _ = require('lodash');
+// const Framework = require('@vechain/connex-framework').Framework;
 const ConnexDriver = require('@vechain/connex-driver');
 
 const web3 = thorify(new Web3(), config.testnetRpcUrl);
@@ -28,18 +28,20 @@ web3.eth.accounts.wallet.add(config.privateKey);
 deployVvet = async() => {
 	// This is the address associated with the private key
 	const walletAddress = web3.eth.accounts.wallet[0].address
+	let transactionReceipt = null;
 
 	console.log("Attempting to deploy contract:", vvet.contractName);
 	console.log("Using wallet address:", walletAddress);
 
 	try {
-		const result = await contract.deploy({ data: vvet.bytecode }).send({ from: walletAddress }, (transactionHash, receipt) => {
-
-			console.log("Transaction Hash: ", receipt);
-		});
+		const result = await contract.deploy({ data: vvet.bytecode })
+								.send({ from: walletAddress })
+								.on('receipt', (receipt) => {
+									transactionReceipt = receipt;
+								});
 	    
-	    // console.log("Transaction Hash:")
-	    console.log("Contract Successfully deployed at address:", result._address);
+	    console.log("Transaction Hash:", transactionReceipt.transactionHash);
+	    console.log("Contract Successfully deployed at address:", transactionReceipt.contractAddress);
 	} 
 	catch(error) {
 		console.log("Deployment failed with:", error)
