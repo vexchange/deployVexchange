@@ -28,12 +28,12 @@ web3.eth.accounts.wallet.add(config.privateKey);
 deployVvet = async() => {
 	// This is the address associated with the private key
 	const walletAddress = web3.eth.accounts.wallet[0].address
-	let transactionReceipt = null;
 
 	console.log("Attempting to deploy contract:", vvet.contractName);
 	console.log("Using wallet address:", walletAddress);
 
 	try {
+		let transactionReceipt = null;
 		const result = await contract.deploy({ data: vvet.bytecode })
 								.send({ from: walletAddress })
 								.on('receipt', (receipt) => {

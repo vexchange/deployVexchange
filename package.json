@@ -6,7 +6,7 @@
   "scripts": {
     "deployVvet": "node deployVvet.js",
     "deployFactory": "node deployFactory.js",
-    "getAddress": ""
+    "createPair": "node "
   },
   "keywords": [],
   "author": "",
