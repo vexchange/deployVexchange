@@ -61,7 +61,7 @@ deployFactory = async () => {
 		});	
 
 	    console.log("Transaction Hash:", transactionReceipt.transactionHash);
-	    console.log("Contract Successfully deployed at address:", factoryAddress);
+	    console.log("Contract Successfully deployed at address:", transactionReceipt.contractAddress);
 	}
 
 	catch(error) {
