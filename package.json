@@ -6,7 +6,7 @@
   "scripts": {
     "deployVvet": "node deployVvet.js",
     "deployFactory": "node deployFactory.js",
-    "createPair": "node "
+    "deployMigrator": "node deployMigrator.js"
   },
   "keywords": [],
   "author": "",

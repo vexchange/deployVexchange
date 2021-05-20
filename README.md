@@ -42,5 +42,8 @@ Currently the following scripts are provided:
 `npm run deployFactory`
 
 
+- to deploy V2 Migrator 
+
+`npm run deployMigrator`
 
 

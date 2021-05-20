@@ -2,16 +2,11 @@
 const config = require("./config");
 const thorify = require("thorify").thorify;
 const Web3 = require("web3");
-// const _ = require('lodash');
-// const Framework = require('@vechain/connex-framework').Framework;
 const ConnexDriver = require('@vechain/connex-driver');
 
 const web3 = thorify(new Web3(), config.testnetRpcUrl);
 const factory = require(config.pathToFactoryJson);
 const router = require(config.pathToRouterJson);
-
-// const { Driver, SimpleNet, SimpleWallet } = ConnexDriver;
-// const wallet = new SimpleWallet();
 
 web3.eth.accounts.wallet.add(config.privateKey);
 
@@ -44,7 +39,7 @@ deployFactory = async () => {
 	    console.log("Transaction Hash:", transactionReceipt.transactionHash);
 	    console.log("Contract Successfully deployed at address:", factoryAddress);
 
-	    console.log("==============================================================================");
+	    console.log("\n==============================================================================\n");
 
 		console.log("Attempting to deploy contract:", config.pathToRouterJson);
 
