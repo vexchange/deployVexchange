@@ -2,9 +2,26 @@
 const config = require("./config");
 const thorify = require("thorify").thorify;
 const Web3 = require("web3");
-const web3 = thorify(new Web3(), config.testnetRpcUrl);
 
 const migrator = require(config.pathToMigratorJson);
+
+let rpcUrl = null;
+if (process.argv.length < 3) 
+{
+    console.error("Please specify network, either mainnet or testnet");
+    process.exit(1);
+} 
+else
+{
+    if (process.argv[2] == "mainnet") rpcUrl = config.mainnetRpcUrl;
+    else if (process.argv[2] == "testnet") rpcUrl = config.testnetRpcUrl;
+    else {
+        console.error("Invalid network specified");
+        process.exit(1);
+    }
+}
+
+const web3 = thorify(new Web3(), rpcUrl);
 
 web3.eth.accounts.wallet.add(config.privateKey);
 
@@ -19,6 +36,7 @@ deployMigrator = async() => {
 
     console.log("Attempting to deploy contract:", config.pathToMigratorJson);
     console.log("Using wallet address:", walletAddress);
+    console.log("Using RPC:", web3.eth.currentProvider.RESTHost);
 
     try
     {

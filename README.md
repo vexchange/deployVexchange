@@ -1,6 +1,7 @@
+
 # Vexchange Deployer
 
-This repo contains all the scripts necessary to deploy the Vexchange smart contract codes.
+This repo contains all the scripts necessary to deploy the Vexchange smart contracts. 
 
 Adapted from Kenneth's deployment scripts
 
@@ -10,17 +11,10 @@ Adapted from Kenneth's deployment scripts
 npm install 
 ```
 
-or 
-
-```
-yarn install
-```
-
 
 ## Configuration and private key
 
-Set config in: `config.js`, including all the necessary .json files to deploy
-
+Set config in `config.js`, including all the necessary .json files to deploy, contract address of deployed contracts, RPC urls etc.
 
 Place private key in `.env` file in the root directory under the variable 
 `PRIVATE_KEY=0x000...abc`
@@ -28,22 +22,23 @@ Place private key in `.env` file in the root directory under the variable
 The `.env` file has been added to `.gitignore` to prevent committing and checking in by mistake.
 
 
+
 ## Deploying contracts
+
+Specify `mainnet` or `testnet` for each deployment. 
 
 Currently the following scripts are provided: 
 
-- to deploy vvet: 
+- Deploy vvet: 
 
-`npm run deployvvet`
+`npm run deployvvet -- testnet`
 
+- Deploy VexchangeV2Factory and router on the testnet: 
 
-- to deploy VexchangeV2Factory and router: 
+`npm run deployFactory -- testnet`
 
-`npm run deployFactory`
+- Deploy V2 Migrator on the mainnet:
 
-
-- to deploy V2 Migrator 
-
-`npm run deployMigrator`
+`npm run deployMigrator -- mainnet`
 
 
