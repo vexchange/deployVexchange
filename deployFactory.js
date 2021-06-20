@@ -38,14 +38,16 @@ deployFactory = async () => {
         console.log("Using RPC:", web3.eth.currentProvider.RESTHost);
 
         const factoryContract = new web3.eth.Contract(factory.abi);
-        const defaultSwapFee = 0;
-        const defaultPlatformFee = 0;
-        const defaultRecoverer = "0x0000000000000000000000000000000000000000";
+        const defaultSwapFee = 30;
+        const defaultPlatformFee = 1667;
+        const defaultPlatformFeeTo = "0x3000000000000000000000000000000000000000";
+        const defaultRecoverer     = "0x3000000000000000000000000000000000000000";
 
         let transactionReceipt = null;
         await factoryContract.deploy({
             data: factory.bytecode,
-            arguments: [defaultSwapFee, defaultPlatformFee, defaultRecoverer],
+            arguments: [defaultSwapFee, defaultPlatformFee, 
+                        defaultPlatformFeeTo, defaultRecoverer],
         })
         .send({ from: walletAddress })
         .on("receipt", (receipt) => {
