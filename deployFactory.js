@@ -57,29 +57,7 @@ deployFactory = async () => {
         const factoryAddress = transactionReceipt.contractAddress
         
         console.log("Transaction Hash:", transactionReceipt.transactionHash);
-        console.log("Contract Successfully deployed at address:", factoryAddress);
-
-        console.log("\n+++++++++++++++++++++++++++++++++++++++++++++++++\n");
-        console.log("Renouncing Mastership of the Factory contract");        
-
-        const SET_MASTER_SELECTOR = web3.eth.abi.encodeFunctionSignature("setMaster(address,address)");
-
-        // This address is the same for both mainnet and testnet
-        const PROTOTYPE_CONTRACT_ADDRESS = "0x000000000000000000000050726f746f74797065";
-
-        const data = web3.eth.abi
-                             .encodeParameters(
-                                 ["address", "address"], 
-                                 [factoryAddress, "0x0000000000000000000000000000000000000000"])
-                             .slice(2); // slicing to get rid of the '0x' in the beginning
-
-        await web3.eth.sendTransaction({
-            to: PROTOTYPE_CONTRACT_ADDRESS,
-            data: SET_MASTER_SELECTOR + data,
-            from: walletAddress
-        }).on("receipt", (receipt) => {
-            console.log("Mastership successfully renounced, txid: ", receipt.transactionHash);
-        });
+        console.log("Contract Successfully deployed at address:", factoryAddress, "\n");
 
         console.log("\n==============================================================================\n");
         console.log("Attempting to deploy contract:", config.pathToRouterJson);
