@@ -32,19 +32,19 @@ Currently the following scripts are provided:
 - Deploy vvet: 
 
 ```
-npm run deployvvet -- testnet
+npm run deployvvet testnet
 ```
 
 - Deploy VexchangeV2Factory and router on the testnet: 
 
 ```
-npm run deployFactory -- testnet
+npm run deployFactory testnet
 ```
 
 - Deploy V2 Migrator on the mainnet:
 
 ```
-npm run deployMigrator -- mainnet
+npm run deployMigrator mainnet
 ```
 
 
